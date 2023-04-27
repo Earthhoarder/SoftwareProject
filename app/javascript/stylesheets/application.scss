@@ -1,1 +1,27 @@
-@import "~bootstrap/scss/bootstrap"
+@import "~bootstrap/scss/bootstrap";
+
+
+@mixin Headers {
+    color: rgb(99, 13, 164);
+    font-size: 25px;
+    font-weight: bold;
+    border: 1px solid lightblue;
+}
+
+@mixin Paragraphs {
+    color:rgb(99, 13, 164);
+    font-size: 12px;
+}
+
+.main-header {
+    @include Headers;
+}
+
+body {
+    @include Paragraphs;
+    background-color: whitesmoke;
+    
+}
+
+
+
