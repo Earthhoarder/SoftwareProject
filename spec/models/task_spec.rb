@@ -4,7 +4,7 @@ require "rails_helper"
 describe "Task Attribute Requirements on Create", :type => :model do
   context "validation tests" do
     it "ensures the chore is present when creating task" do
-      task = Task.create(chore: "Generic Chore",name: "Generic Name", time: 1, description: "Generic Description")
+      task = Task.create(name: "Generic Name", time: 1, description: "Generic Description")
       expect(task.valid?).to eq(false)
     end
     it "should not be able to save task when name missing" do
