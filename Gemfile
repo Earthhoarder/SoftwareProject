@@ -71,3 +71,5 @@ end
 gem 'tzinfo-data'
 
 gem 'jquery-rails'
+
+gem 'tts', '~> 0.7.0'

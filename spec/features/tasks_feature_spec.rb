@@ -18,6 +18,63 @@ RSpec.feature "Tasks", type: :feature do
       expect(page).to have_content("Task was successfully updated")
     end
 
+    scenario "should be successfull" do
+      within("form") do
+        fill_in "Name", with: "New Name"
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Task was successfully updated")
+    end
+
+    scenario "should be successfull" do
+      within("form") do
+        fill_in "Time", with: 2
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Task was successfully updated")
+    end
+
+    scenario "should be successfull" do
+      within("form") do
+        fill_in "Description", with: "New Description"
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Task was successfully updated")
+    end
+
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Chore", with: ""
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Chore can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Name", with: ""
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Name can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Time", with: nil
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Time can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Description", with: ""
+      end
+      click_button "Update Task"
+      expect(page).to have_content("Description can't be blank")
+    end
+
   end
 
   context "Login" do
@@ -62,6 +119,47 @@ RSpec.feature "Tasks", type: :feature do
       click_button "Create Task"
       expect(page).to have_content("Task was successfully created")
     end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Name", with: "Generic Name"
+        fill_in "Time", with: 1;
+        fill_in "Description", with: "Generic Description"
+      end
+      click_button "Create Task"
+      expect(page).to have_content("Chore can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Chore", with: "Generic Chore"
+        fill_in "Time", with: 1;
+        fill_in "Description", with: "Generic Description"
+      end
+    click_button "Create Task"
+    expect(page).to have_content("Name can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Chore", with: "Generic Chore"
+        fill_in "Name", with: "Generic Name"
+        fill_in "Description", with: "Generic Description"
+      end
+      click_button "Create Task"
+      expect(page).to have_content("Time can't be blank")
+    end
+
+    scenario "should fail" do
+      within("form") do
+        fill_in "Chore", with: "Generic Chore"
+        fill_in "Name", with: "Generic Name"
+        fill_in "Time", with: 1;
+      end
+      click_button "Create Task"
+      expect(page).to have_content("Description can't be blank")
+    end
+
   end
 
 end
